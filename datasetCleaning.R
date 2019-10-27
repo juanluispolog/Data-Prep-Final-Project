@@ -1,0 +1,57 @@
+# This file cointains the coded used for cleaning and homogeneizing the datasets
+
+rm(list=ls())
+
+setwd("/Users/juanluispolog/OneDrive - Universidad Politécnica de Madrid/JUAN LUIS/06 MCS/CSP571_DataPrepAnalysis/project/DataPrep")
+
+df.15.16 <- read.csv("premier-15-16.csv")
+df.16.17 <- read.csv("premier-16-17.csv")
+df.17.18 <- read.csv("premier-17-18.csv")
+df.18.19 <- read.csv("premier-18-19.csv")
+df.19.20 <- read.csv("premier-19-20.csv")
+
+str(df.15.16)
+
+# Removing betting attributes from datasets
+df.15.16 <- df.15.16[, - c(which(colnames(df.15.16) == "B365H"):ncol(df.15.16))]
+df.16.17 <- df.16.17[, - c(which(colnames(df.16.17) == "B365H"):ncol(df.16.17))]
+df.17.18 <- df.17.18[, - c(which(colnames(df.17.18) == "B365H"):ncol(df.17.18))]
+df.18.19 <- df.18.19[, - c(which(colnames(df.18.19) == "B365H"):ncol(df.18.19))]
+df.19.20 <- df.19.20[, - c(which(colnames(df.19.20) == "B365H"):ncol(df.19.20))]
+
+str(df.15.16)
+str(df.16.17)
+str(df.17.18)
+str(df.18.19)
+str(df.18.19)
+
+# Removing Time attribute from df.19.20 season, since other df do not store this information
+df.19.20 <- df.19.20[, - which(colnames(df.19.20) == "Time")]
+
+# Homogeneizing Date attribute: yyyy/mm/dd
+df.list <- list(df.15.16, df.16.17, df.17.18, df.18.19, df.19.20)
+
+for (i in 1:length(df.list)) {
+  date <- as.Date(df.list[[i]]$Date, format = "%y/%m/%d")
+  date.df <- data.frame(yyyy = as.numeric(format(date, format = "%Y")), 
+                        mm= as.numeric(format(date, format = "%m")), 
+                        dd = as.numeric(format(date, format = "%d"))
+                        )
+  
+  df.list[[i]] <- data.frame(df.list[[i]]$Div, date.df, df.list[[i]][, c(3:23)])
+}
+
+df.15.16 <- df.list[[1]]
+df.16.17 <- df.list[[2]]
+df.17.18 <- df.list[[3]]
+df.18.19 <- df.list[[4]]
+df.19.20 <- df.list[[5]]
+
+
+# Merging datasets
+
+df <- rbind(df.15.16, df.16.17, df.17.18, df.18.19, df.19.20)
+str(df)
+
+
+
