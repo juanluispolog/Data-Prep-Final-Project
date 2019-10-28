@@ -32,10 +32,10 @@ df.19.20 <- df.19.20[, - which(colnames(df.19.20) == "Time")]
 df.list <- list(df.15.16, df.16.17, df.17.18, df.18.19, df.19.20)
 
 for (i in 1:length(df.list)) {
-  date <- as.Date(df.list[[i]]$Date, format = "%y/%m/%d")
-  date.df <- data.frame(yyyy = as.numeric(format(date, format = "%Y")), 
+  date <- as.Date(df.list[[i]]$Date, format = "%d/%m/%Y")
+  date.df <- data.frame(dd = as.numeric(format(date, format = "%d")),
                         mm= as.numeric(format(date, format = "%m")), 
-                        dd = as.numeric(format(date, format = "%d"))
+                        yyyy = as.numeric(format(date, format = "%y"))
                         )
   
   df.list[[i]] <- data.frame(df.list[[i]]$Div, date.df, df.list[[i]][, c(3:23)])
