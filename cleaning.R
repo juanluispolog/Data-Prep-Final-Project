@@ -1,3 +1,4 @@
+
 ## This script stores some functions used for cleaning and homogeneizing the datasets
 
 
@@ -23,7 +24,7 @@ clean <- function(df) {
                         "mm" = as.numeric(format(date, format = "%m")),
                         "yy" = as.numeric(format(date, format = "%y")))
 
-  df <- data.frame("Div" = df$Div, date.df, df[, c(3:23)])
+  df <- data.frame(date.df, df[, c(3:23)])
 
   return(df)
 }
