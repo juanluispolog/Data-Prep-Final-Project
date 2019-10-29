@@ -1,5 +1,6 @@
 ## This script stores some functions used for cleaning and homogeneizing the datasets
 
+# sara_69
 
 # clean function removes the betting attributes, removes Time attribute (not useful) and
 # homogeneizes the date format in order to have the same date format in all datasets.
