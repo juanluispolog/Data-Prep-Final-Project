@@ -8,22 +8,23 @@
 
 clean <- function(df) {
   # Removing betting attributes from dataset
-  df <- df[, - c(which(colnames(df.15.16) == "B365H"):ncol(df.15.16))]
+  df <- df[, - c(which(colnames(df) == "B365H"):ncol(df))]
   
   # Removing Time attribute in case it exists
-  if (is.null(df$Time)){
-    df <- df[, - which(colnames(df) == "Time")]
+  if (is.null(df$Time) == FALSE){
+     df <- df[, - which(colnames(df) == "Time")]
+    print("hello")
   }
-  
-  # Homogeneizing Date attribute: yyyy/mm/dd
+
+  # Homogeneizing Date attribute: dd/mm/yy
+
   date <- as.Date(df$Date, format = "%d/%m/%Y")
-  date.df <- data.frame(dd = as.numeric(format(date, format = "%d")),
-                        mm= as.numeric(format(date, format = "%m")),
-                        yy = as.numeric(format(date, format = "%y"))
-  )
-  
-  df <- data.frame(df.list[[i]]$Div, date.df, df.list[[i]][, c(3:23)])
-  
+  date.df <- data.frame("dd" = as.numeric(format(date, format = "%d")),
+                        "mm" = as.numeric(format(date, format = "%m")),
+                        "yy" = as.numeric(format(date, format = "%y")))
+
+  df <- data.frame("Div" = df$Div, date.df, df[, c(3:23)])
+
   return(df)
 }
 
@@ -70,3 +71,4 @@ wld <- function(df, team) {
   
   return(df.team)
 }
+
