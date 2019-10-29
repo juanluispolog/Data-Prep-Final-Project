@@ -72,3 +72,22 @@ wld <- function(df, team) {
   return(df.team)
 }
 
+
+# homeTeam function selects rows in a dataframe for a given home team
+# It receives a dataframe and the team name as a string
+# It returns a new dataframe that contains rows with the given home team
+
+homeTeam <- function(df, home.team){
+  df <- df[c(which(df$HomeTeam == home.team)), ]
+  return(df)
+}
+
+# awayTeam function selects rows in a dataframe for a given away team
+# It receives a dataframe and the team name as a string
+# It returns a new dataframe that contains rows with the given away team
+
+awayTeam <- function(df, away.team){
+  df <- df[c(which(df$AwayTeam == away.team)), ]
+  return(df)
+}
+
