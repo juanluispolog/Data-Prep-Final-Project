@@ -1,7 +1,6 @@
 # This script cointains the coded used for cleaning and homogeneizing the datasets
 # Datasets from 5 past seasons have been used
 # Last update for season 19/20 dataset: 10/26/2019
-#Prueba_Eduardo
 
 rm(list=ls())
 
