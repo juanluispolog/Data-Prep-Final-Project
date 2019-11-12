@@ -6,7 +6,7 @@
 # It receives the dataframe.
 # It returns the cleaned dataframe.
 
-clean <- function(df) {
+prepDataset <- function(df) {
   # Removing betting attributes from dataset
   df <- df[, - c(which(colnames(df) == "B365H"):ncol(df))]
   
