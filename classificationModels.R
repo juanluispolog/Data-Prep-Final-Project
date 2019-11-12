@@ -4,12 +4,12 @@
 rm(list=ls())
 
 setwd("/Users/juanluispolog/OneDrive - Universidad Politécnica de Madrid/JUAN LUIS/06 MCS/CSP571_DataPrepAnalysis/project/DataPrep")
-source("cleaning.R")
+source("datasetPrep.R")
 
-df.15.16 <- clean(read.csv("premier-15-16.csv"))
-df.16.17 <- clean(read.csv("premier-16-17.csv"))
-df.17.18 <- clean(read.csv("premier-17-18.csv"))
-df.18.19 <- clean(read.csv("premier-18-19.csv"))
+df.15.16 <- prepDataset(read.csv("premier-15-16.csv"))
+df.16.17 <- prepDataset(read.csv("premier-16-17.csv"))
+df.17.18 <- prepDataset(read.csv("premier-17-18.csv"))
+df.18.19 <- prepDataset(read.csv("premier-18-19.csv"))
 
 # Merging datasets:
 df <- rbind(df.15.16, df.16.17, df.17.18, df.18.19)
