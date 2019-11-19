@@ -13,7 +13,6 @@ prepDataset <- function(df) {
   # Removing Time attribute in case it exists
   if (is.null(df$Time) == FALSE){
      df <- df[, - which(colnames(df) == "Time")]
-    print("hello")
   }
 
   # Homogeneizing Date attribute: dd/mm/yy
@@ -37,16 +36,18 @@ prepDataset <- function(df) {
   if(df$yy[1]==15){
     df <- data.frame("Season"=rep("15/16", times = length(df$yy)), df)
   }
-  if(df$yy[1]=="16"){
+  if(df$yy[1]==16){
     df <- data.frame("Season"=rep("16/17", times = length(df$yy)), df)
   }
-  if(df$yy[1]=="17"){
+  if(df$yy[1]==17){
     df <- data.frame("Season"=rep("17/18", times = length(df$yy)), df)
   }
-  if(df$yy[1]=="18"){
+  if(df$yy[1]==18){
     df <- data.frame("Season"=rep("18/19", times = length(df$yy)), df)
   }
-  
+  if(df$yy[1]==19){
+    df <- data.frame("Season"=rep("19/20", times = length(df$yy)), df)
+  }
   
   return(df)
 }
